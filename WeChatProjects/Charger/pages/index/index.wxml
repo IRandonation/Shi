@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<view class="container">
+  <map class="map">
+    <cover-view>
+      <button class = 'btn1' >
+       <text class='btn-text'> 搜索</text>
+     </button>
+    </cover-view>  
+  </map>
+</view>
+  
