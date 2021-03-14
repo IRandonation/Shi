@@ -31,6 +31,23 @@ def Up_Turn(Cube):
                         (Cube[5][0],Cube[5][1],Cube[5][2],Cube[5][3])])
     return Cube
 
+class TreeNode:
+    def __init__(self,Cube):
+        self.val = Cube
+        self.left = None
+        self.front = None
+        self.up = None
+
+def Creat_Tree(root,Cube,i):
+    if i < 4:
+        root = TreeNode(Cube)
+        root.left = Creat_Tree(root.left,Left_Turn(Cube),3^i)
+        print(i)
+        root.front = Creat_Tree(root.front,Front_Turn(Cube),3^i+1)
+        root.up = Creat_Tree(root.up,Up_Turn(Cube),3^i+2)
+        return root
+    return root
+
 Cube = Init_Cube()
-Cube = Up_Turn(Cube)
-print(Cube)
+Creat_Tree(Cube,Cube,0)
+
