@@ -32,4 +32,5 @@ def Up_Turn(Cube):
     return Cube
 
 Cube = Init_Cube()
+Cube = Up_Turn(Cube)
 print(Cube)
