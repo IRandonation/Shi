@@ -31,23 +31,45 @@ def Up_Turn(Cube):
                         (Cube[5][0],Cube[5][1],Cube[5][2],Cube[5][3])])
     return Cube
 
-class TreeNode:
-    def __init__(self,Cube):
-        self.val = Cube
-        self.left = None
-        self.front = None
-        self.up = None
+# -*- coding:utf-8 -*-
 
-def Creat_Tree(root,Cube,i):
-    if i < 4:
-        root = TreeNode(Cube)
-        root.left = Creat_Tree(root.left,i = i+1,i = i+1)
-        print(i)
-        root.front = Creat_Tree(root.front,i = i+1,i = i+1)
-        root.up = Creat_Tree(root.up,i = i+1,i = i+1)
-        return root
+'二叉树结点类'
+class TreeNode:
+    def __init__(self, x):
+        self.val = x
+        self.left = None
+        self.mid = None
+        self.right = None
+        
+'列表创建二叉树'
+def listcreattree(root,i,Cube):###用列表递归创建二叉树，
+    #它其实创建过程也是从根开始a开始，创左子树b，再创b的左子树，如果b的左子树为空，返回none。
+    #再接着创建b的右子树，
+    if i<13:
+        root=TreeNode(i)
+        print('列表序号：'+str(i)+str(Cube[0]))
+        #往左递推
+        root.left=listcreattree(root.left,3*i+1,Cube = Left_Turn(Cube))
+        root.mid=listcreattree(root.mid,3*i+2,Cube = Front_Turn(Cube))
+        #往右回溯
+        root.right=listcreattree(root.right,3*i+3, Cube = Up_Turn(Cube))
+        #再返回根'
+        print('************返回根')
+        return root  ###这里的return很重要
     return root
 
+def add(num):
+    num = num+1
+    return num
+
 Cube = Init_Cube()
-Creat_Tree(Cube,Cube,0)
+listcreattree(None,0,Cube)    
+
+
+
+
+
+
+
+
 
