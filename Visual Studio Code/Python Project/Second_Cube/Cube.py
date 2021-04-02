@@ -41,10 +41,10 @@ class TreeNode:
 def Creat_Tree(root,Cube,i):
     if i < 4:
         root = TreeNode(Cube)
-        root.left = Creat_Tree(root.left,Left_Turn(Cube),3^i)
+        root.left = Creat_Tree(root.left,i = i+1,i = i+1)
         print(i)
-        root.front = Creat_Tree(root.front,Front_Turn(Cube),3^i+1)
-        root.up = Creat_Tree(root.up,Up_Turn(Cube),3^i+2)
+        root.front = Creat_Tree(root.front,i = i+1,i = i+1)
+        root.up = Creat_Tree(root.up,i = i+1,i = i+1)
         return root
     return root
 
