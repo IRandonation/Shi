@@ -41,6 +41,20 @@ class TreeNode:
         self.mid = None
         self.right = None
         
+    def Search(self,AimCube,Tree,i):
+        if i < 4:
+            if (Tree.val == AimCube).all():
+                return 1
+            else:
+                self.Search(AimCube,Tree.left,i = 3*i+1)
+                print('l',i)
+                self.Search(AimCube,Tree.mid,i = 3*i+2)
+                print('f',i)
+                self.Search(AimCube,Tree.right,i = 3*i+3)
+                print('u',i)
+        else:
+            return 2
+
 '列表创建二叉树'
 def listcreattree(root,i,Cube):###用列表递归创建二叉树，
     #它其实创建过程也是从根开始a开始，创左子树b，再创b的左子树，如果b的左子树为空，返回none。
@@ -50,20 +64,27 @@ def listcreattree(root,i,Cube):###用列表递归创建二叉树，
         print('列表序号：'+str(i)+str(Cube[0]))
         #往左递推
         root.left=listcreattree(root.left,3*i+1,Cube = Left_Turn(Cube))
+        root.val = Cube
         root.mid=listcreattree(root.mid,3*i+2,Cube = Front_Turn(Cube))
+        root.val = Cube
         #往右回溯
         root.right=listcreattree(root.right,3*i+3, Cube = Up_Turn(Cube))
+        root.val = Cube
         #再返回根'
         print('************返回根')
         return root  ###这里的return很重要
     return root
 
-def add(num):
-    num = num+1
-    return num
+
 
 Cube = Init_Cube()
-listcreattree(None,0,Cube)    
+Cube1 = Up_Turn(Cube)
+Tree = listcreattree(None,0,Cube)
+print(Tree.val)
+print(Cube1)
+mystack = []
+p = Tree.Search(Cube1,Tree,0)
+print(p)
 
 
 
