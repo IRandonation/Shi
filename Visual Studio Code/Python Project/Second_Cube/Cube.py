@@ -41,19 +41,19 @@ class TreeNode:
         self.mid = None
         self.right = None
         
-    def Search(self,AimCube,Tree,i):
-        if i < 4:
-            if (Tree.val == AimCube).all():
-                return 1
-            else:
-                self.Search(AimCube,Tree.left,i = 3*i+1)
-                print('l',i)
-                self.Search(AimCube,Tree.mid,i = 3*i+2)
-                print('f',i)
-                self.Search(AimCube,Tree.right,i = 3*i+3)
-                print('u',i)
-        else:
-            return 2
+def Search(root,AimCube):
+    if not root:
+        return
+    if (AimCube == root.val).all():
+        print(root.val)
+        print('true')
+        return
+    else:
+        print(root.val)
+        Search(root.left,AimCube)
+        Search(root.mid,AimCube)
+        Search(root.right,AimCube)
+    print('false')
 
 '列表创建二叉树'
 def listcreattree(root,i,Cube):###用列表递归创建二叉树，
@@ -78,13 +78,14 @@ def listcreattree(root,i,Cube):###用列表递归创建二叉树，
 
 
 Cube = Init_Cube()
-Cube1 = Up_Turn(Cube)
+Cube1 = Left_Turn(Cube)
 Tree = listcreattree(None,0,Cube)
-print(Tree.val)
+
 print(Cube1)
-mystack = []
-p = Tree.Search(Cube1,Tree,0)
-print(p)
+print('*********')
+
+Search(Tree,Cube1)
+
 
 
 
