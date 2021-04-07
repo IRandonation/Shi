@@ -81,9 +81,17 @@ def listcreattree(root,i,Cube):###用列表递归创建二叉树，
     return root
 
 def Aim():
-    cube = input("please input the cube you want to solve: ")
-    Cube = np.array(cube)
-    return Cube
+    i = 0
+    j = 0
+    Line = [[0]*4]*6
+    print(Line)
+    for j in range(6):
+        Line[j] = input("Please input").split(" ")
+        Line[i] = [int(j) for j in Line [i]]
+        i = i+1
+    print(Line)
+    return Line
+
 
 Cube = Init_Cube()
 Tree = listcreattree(None,0,Cube)
