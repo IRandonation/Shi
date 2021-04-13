@@ -26,6 +26,7 @@ def Fitness(point,n):
     print(point[n].Fit)
 
 
+
 #def Eliminate(Point):
 
 
@@ -36,6 +37,7 @@ def Fitness(point,n):
 
 po = [Point()]*9
 Init_Point(po)
+print(po)
 #print(po[2].X_Axis)
 #print(po[2].Fit)
 
