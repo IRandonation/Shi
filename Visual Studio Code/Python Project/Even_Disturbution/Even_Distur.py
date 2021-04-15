@@ -25,9 +25,10 @@ def Fitness(point,n):
     x_fit = 0
     y_fit = 0
     for i in range(6):
-        x_fit = x_fit + pow((point[i].X_Axis-point[n].X_Axis),2)
-        y_fit = y_fit + pow((point[i].Y_Axis-point[n].Y_Axis),2)
-    Fit = (pow(point[n].X_Axis,2)+pow((1-point[n].X_Axis),2)+pow(point[n].Y_Axis,2)+pow((1-point[n].Y_Axis),2)+x_fit+y_fit)/8
+        L_Sum = pow((Point[i].X_Axis - Point[n].X_Axis),2)+pow((Point[i].Y_Axis - Point[n].Y_Axis),2) + L_Sum
+    L_Even = L_Sum/6
+    for j in range(6):
+        
     return Fit
     #print(point[n].Fit)
 
